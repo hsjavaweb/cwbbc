@@ -1,0 +1,77 @@
+#include<stdio.h>
+#include <malloc.h>
+typedef struct Node {
+	    int date;
+	    struct Node *next;
+	
+}SLNode;
+ void paixu(SLNode *head, int count) {
+	          SLNode *p;
+	     p = (SLNode *)malloc(sizeof(SLNode *));
+	    int temp;
+	    for (int i = 0; i<count - 1; i++) {
+		        for (p = head->next; p->next != NULL; p = p->next) {
+			            if (p->date>p->next->date) {
+				                temp = p->date;
+				                 p->date = p->next->date;
+				                p->next->date = temp;
+				
+			}
+			
+		}
+		
+	}
+	
+}
+
+void add(SLNode *head1, SLNode *head2) {
+	       SLNode *p;
+	    p = head1;
+	    while (p->next != NULL) {
+		         p = p->next;
+		
+	}
+	     p->next = head2->next;
+	
+}
+
+ void inset(SLNode *head, int count) {
+	         SLNode *p;
+	     while (count--) {
+		        p = (SLNode *)malloc(sizeof(SLNode));
+		        scanf("%d", &p->date);
+		        p->next = head->next;
+		         head->next = p;
+		
+	}
+	
+}
+
+ void out(SLNode *head) {
+	        SLNode *p;
+	     p = (SLNode *)malloc(sizeof(SLNode));
+	     p = head;
+	     while (p->next != NULL) {
+		         printf("%d ", p->next->date);
+		         p = p->next;
+		
+	}
+	    printf("\n");
+	
+}
+ int main() {
+	     struct Node *head1, *head2;
+	     int n, m;
+	     head1 = (struct Node *)malloc(sizeof(SLNode));
+	     head2 = (struct Node *)malloc(sizeof(SLNode));
+	    scanf("%d%d", &n, &m);
+	     head1->next = NULL;
+	   head2->next = NULL;
+	     inset(head1, n);
+	     inset(head2, m);
+	     add(head1, head2);
+	    paixu(head1, n + m);
+	     out(head1);
+	     return 0;
+	
+}
