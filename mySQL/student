@@ -1,0 +1,30 @@
+net start mysql57 //启动服务
+
+mysql -troot -p   //进入数据库,输入密码
+
+create database test;  //创建一个数据库名叫test
+
+show databases;//查看服务器上存在的数据库
+
+use test; //使用名为test数据库
+
+create table  student(
+     name  varchar(10),
+     sex   char(1),
+     age    int(2),
+     number vercahr(20)
+);  //创建一个名为student的表，有name,sex,age,number四列
+
+insert into student values("小明","男",20,"000001"); //导入数据
+
+select name,age from student;/ /输出name,age,两列;
+
+select name from student where="小明"; //输出小明这一行
+
+update student set age=21 where name="小明"; //将小明的年龄改为21;
+
+delete from student where name="小明"; //清除小明这一行
+
+delete from student; //清空student表中内容
+
+
